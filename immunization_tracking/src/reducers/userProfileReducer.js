@@ -16,7 +16,7 @@ const initialState = {
 };
 
 function userProfileReducer(state = initialState, action) {
-  console.log(`----------------fetch user/clinician profile fired`);
+  console.log(`----------------fetch user/staff profile fired`);
   switch (action.type) {
     case FETCHING_USER:
       return {
