@@ -1,3 +1,8 @@
+// TODO:
+//   ADD_USER
+//   REMOVE_USER (stretch)
+//   UPDATE_USER (stretch)
+
 import {
   FETCHING_USER,
   FETCH_USER_SUCCESS,
@@ -11,7 +16,7 @@ const initialState = {
 };
 
 function userProfileReducer(state = initialState, action) {
-  console.log(`----------------fetch user/clinician profile fired`);
+  console.log(`----------------fetch user/staff profile fired`);
   switch (action.type) {
     case FETCHING_USER:
       return {
