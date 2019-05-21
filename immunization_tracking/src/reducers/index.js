@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
-import childReducer from './childReducer';
 import loginReducer from './loginReducer';
-import patientProfileReducer from './patientProfileReducer';
-import clinicianProfileReducer from './clinicianProfileReducer';
+import clinicianReducer from './clinicianReducer';
+import userProfileReducer from './userProfileReducer';
+import patientReducer from './patientReducer';
 
 const rootReducer = combineReducers({
-  child: childReducer,
   login: loginReducer,
-  patientProfile: patientProfileReducer,
-  clinicianProfile: clinicianProfileReducer
+  userProfileReducer: userProfileReducer,
+  clinicianReducer: clinicianReducer,
+  patientReducer: patientReducer
 });
 
 export default rootReducer;
