@@ -1,3 +1,8 @@
+// TODO:
+//   ADD_CLINICIAN
+//   REMOVE_CLINICIAN (stretch)
+//   UPDATE_CLINICIAN (stretch)
+
 import {
     FETCHING_CLINICIAN,
     FETCH_CLINICIAN_SUCCESS,

@@ -1,3 +1,8 @@
+// TODO:
+//   ADD_USER
+//   REMOVE_USER (stretch)
+//   UPDATE_USER (stretch)
+
 import {
   FETCHING_USER,
   FETCH_USER_SUCCESS,

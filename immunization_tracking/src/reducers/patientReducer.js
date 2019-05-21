@@ -1,3 +1,8 @@
+// TODO:
+//   ADD_PATIENT
+//   REMOVE_PATIENT (stretch)
+//   UPDATE_PATIENT (stretch)
+
 import {
     FETCHING_PATIENT,
     FETCH_PATIENT_SUCCESS,
