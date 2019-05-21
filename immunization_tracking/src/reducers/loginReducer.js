@@ -8,6 +8,7 @@ const initialState = {
 };
 
 function loginReducer(state = initialState, action) {
+  console.log(`----------------login fired`);
   switch (action.type) {
     case LOGGING_IN:
       return {
