@@ -14,6 +14,7 @@ const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk, logger))
 );
+export const URL = 'https://immunization-tracker-backend.herokuapp.com';
 
 ReactDOM.render(
   <Router>
