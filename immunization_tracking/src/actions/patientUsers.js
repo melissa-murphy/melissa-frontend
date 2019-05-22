@@ -8,9 +8,9 @@ export const FETCH_PATIENT_USER_FAILURE = 'FETCH_PATIENT_USER_FAILURE';
 
 export const fetchUsers = () => dispatch => {
   dispatch({ type: FETCH_PATIENT_USER_START });
-  console.log(`---------------fetching Users`);
+  console.log(`---------------patient fetching users`);
   axiosAuth()
-    .get(`http://localhost:5000/api/friends/`)
+    .get(`${URL}/api/patients`)
     .then(res => {
       console.log(res.data);
       dispatch({ type: FETCH_PATIENT_USER_SUCCESS, payload: res.data });

@@ -2,13 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import PrivateRoute from '../PrivateRoute';
 import AddUser from './AddUser';
-import PrivateRoute from './PrivateRoute';
+import PatientLogin from './PatientLogin';
+import StaffLogin from './StaffLogin';
+import UserProfile from './UserProfile';
+import PatientProfile from './PatientProfile';
 
+import { fetchUsers  } from '../actions';
 
-// import {  } from '../actions';
-
-import '../styles/index.css';
+// import '../styles/index.css';
 
 class App extends React.Component {
   componentDidMount() {
@@ -31,5 +34,5 @@ class App extends React.Component {
 
 export default connect(
   null,
-  { getData }
+  { fetchUsers }
 )(App);
