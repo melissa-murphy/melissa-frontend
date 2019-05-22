@@ -3,11 +3,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import PrivateRoute from '../PrivateRoute';
-import AddUser from './AddUser';
+// import AddUser from './AddUser';
 import PatientLogin from './PatientLogin';
-import StaffLogin from './StaffLogin';
+// import StaffLogin from './StaffLogin';
 import UserProfile from './UserProfile';
-import PatientProfile from './PatientProfile';
+// import PatientProfile from './PatientProfile';
 
 
 // import '../styles/index.css';
@@ -30,10 +30,10 @@ export default function App() {
 </div>
 
         <Route path="/patient-login" component={PatientLogin} />
-        <Route path="/staff-login" component={StaffLogin} />
-        <Route exact path="/add-child" component={AddUser} />
+        {/* <Route path="/staff-login" component={StaffLogin} /> */}
+        {/* <Route exact path="/add-child" component={AddUser} /> */}
         <PrivateRoute exact path="/dashboard" component={UserProfile} />
-        <PrivateRoute exact path="/child-patient/" component={PatientProfile} />
+        {/* <PrivateRoute exact path="/child-patient/" component={PatientProfile} /> */}
       </Router>
     );
   

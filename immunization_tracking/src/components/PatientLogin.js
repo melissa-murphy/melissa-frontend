@@ -45,7 +45,7 @@ class PatientLogin extends Component {
             onChange={this.handleChange}
           />
           <button>
-            {this.props.loggingIn ? (
+            {this.props.login ? (
               <Loader type="ThreeDots" color="purple" height="12" width="26" />
             ) : (
               'Log in'
@@ -57,7 +57,7 @@ class PatientLogin extends Component {
   }
 }
 const mapStateToProps = state => ({
-  login: state.patient.login
+  login: state.login
 });
 
 export default connect(
