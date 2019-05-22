@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { login } from '../actions';
-
-import Loader from 'react-loader-spinner';
+import { Input } from 'reactstrap';
 
 class PatientLogin extends Component {
   state = {
@@ -25,7 +22,7 @@ class PatientLogin extends Component {
     e.preventDefault();
     console.log(`--------------current auth state` + this.state.credentials);
     this.props.login(this.state.credentials).then(() => {
-      this.props.history.push('/dashboard');
+      this.props.history.push('/patient-dashboard');
     });
   };
 
@@ -33,35 +30,25 @@ class PatientLogin extends Component {
     return (
       <div>
         <form onSubmit={this.login}>
-          <input
+          <Input
+            placeholder="username"
             type="text"
             name="username"
             value={this.state.credentials.username}
             onChange={this.handleChange}
           />
-          <input
+          <Input
+            placeholder="password"
             type="password"
             name="password"
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
-          <button>
-            {this.props.loading ? (
-              <Loader type="ThreeDots" color="purple" height="12" width="26" />
-            ) : (
-              'Log in'
-            )}
-          </button>
+          <button>login</button>
         </form>
       </div>
     );
   }
 }
-const mapStateToProps = state => ({
-  login: state.login
-});
 
-export default connect(
-  mapStateToProps,
-  { login }
-)(PatientLogin);
+export default PatientLogin;
