@@ -1,18 +1,20 @@
+// import * as actionTypes from '../actions';
+ 
 // TODO:
 //   ADD_USER
 //   REMOVE_USER (stretch)
 //   UPDATE_USER (stretch)
 
 import {
-  FETCHING_USER,
-  FETCH_USER_SUCCESS,
-  FETCH_USER_FAILURE,
-  FETCHING_PATIENT,
+  // FETCH_USER_START,
+  // FETCH_USER_SUCCESS,
+  // FETCH_USER_FAILED,
+  FETCH_PATIENT_START,
   FETCH_PATIENT_SUCCESS,
-  FETCH_PATIENT_FAILURE,
-  LOGGING_IN,
+  FETCH_PATIENT_FAILED,
+  LOGIN_START,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  LOGIN_FAILED
 } from '../actions';
 
 export const URL = 'https://immunization-tracker-backend.herokuapp.com';
@@ -26,26 +28,26 @@ const initialState = {
   error: ''
 };
 
-function patientReducer(state = initialState, action) {
+function reducer(state = initialState, action) {
   console.log(`----------------fetch user/staff profile fired`);
   switch (action.type) {
-    case FETCHING_USER:
-      return {
-        ...state,
-        loading: true
-      };
-    case FETCH_USER_SUCCESS:
-      return {
-        ...state,
-        friends: action.payload,
-        loading: false
-      };
-    case FETCH_USER_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-        loading: false
-      };
+    // case FETCH_USER_START:
+    //   return {
+    //     ...state,
+    //     loading: true
+    //   };
+    // case FETCH_USER_SUCCESS:
+    //   return {
+    //     ...state,
+    //     friends: action.payload,
+    //     loading: false
+    //   };
+    // case FETCH_USER_FAILED:
+    //   return {
+    //     ...state,
+    //     error: action.payload,
+    //     loading: false
+    //   };
 
     // TODO:
     //   ADD_PATIENT
@@ -54,7 +56,7 @@ function patientReducer(state = initialState, action) {
 
     // console.log(`----------------fetch PATIENT/staff profile fired`);
 
-    case FETCHING_PATIENT:
+    case FETCH_PATIENT_START:
       return {
         ...state,
         loading: true
@@ -65,7 +67,7 @@ function patientReducer(state = initialState, action) {
         friends: action.payload,
         loading: false
       };
-    case FETCH_PATIENT_FAILURE:
+    case FETCH_PATIENT_FAILED:
       return {
         ...state,
         error: action.payload,
@@ -74,7 +76,7 @@ function patientReducer(state = initialState, action) {
 
     // console.log(`----------------login fired`);
 
-    case LOGGING_IN:
+    case LOGIN_START:
       return {
         ...state,
         loggingIn: true,
@@ -89,7 +91,7 @@ function patientReducer(state = initialState, action) {
         isLoggedIn: true,
         loading: false
       };
-    case LOGIN_FAILURE:
+    case LOGIN_FAILED:
       return {
         ...state,
         error: action.payload,
@@ -102,4 +104,4 @@ function patientReducer(state = initialState, action) {
   }
 }
 
-export default patientReducer;
+export default reducer;

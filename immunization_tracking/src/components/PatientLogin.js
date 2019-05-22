@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { login } from '../actions';
+
 import { Input } from 'reactstrap';
 
 class PatientLogin extends Component {
@@ -6,6 +9,23 @@ class PatientLogin extends Component {
     credentials: {
       username: '',
       password: ''
+    }
+  };
+
+  componentDidMount = () => {
+    if (this.props.location.state) {
+      console.log(this.props.location.state);
+      if (
+        this.props.location.state.email &&
+        this.props.location.state.password
+      ) {
+        this.setState({
+          credentials: {
+            email: this.props.location.state.email,
+            password: this.props.location.state.password
+          }
+        });
+      }
     }
   };
 
@@ -44,11 +64,14 @@ class PatientLogin extends Component {
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
-          <button>login</button>
+          <button onClick={this.login}>login</button>
         </form>
       </div>
     );
   }
 }
 
-export default PatientLogin;
+export default connect(
+  null,
+  { login }
+)(PatientLogin);

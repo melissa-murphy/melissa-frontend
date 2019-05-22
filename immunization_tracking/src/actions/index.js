@@ -1,7 +1,7 @@
 // Patient Actions
 
 import axios from 'axios';
-import { axiosAuth } from '../axiosAuth';
+import { axiosAuth } from './axiosAuth';
 
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -29,21 +29,21 @@ export const login = creds => dispatch => {
 };
 
 // Fetch + Initial Render
-export const FETCH_PATIENT_USER_START = 'FETCH_PATIENT_USER_START';
-export const FETCH_PATIENT_USER_SUCCESS = 'FETCH_PATIENT_USER_SUCCESS';
-export const FETCH_PATIENT_USER_FAILURE = 'FETCH_PATIENT_USER_FAILURE';
+export const FETCH_PATIENT_START = 'FETCH_PATIENT_USER_START';
+export const FETCH_PATIENT_SUCCESS = 'FETCH_PATIENT_USER_SUCCESS';
+export const FETCH_PATIENT_FAILED = 'FETCH_PATIENT_USER_FAILED';
 
 export const fetchUsers = () => dispatch => {
-  dispatch({ type: FETCH_PATIENT_USER_START });
+  dispatch({ type: FETCH_PATIENT_START });
   console.log(`---------------patient fetching users`);
   axiosAuth()
     .get(`${URL}/api/patients`)
     .then(res => {
       console.log(res.data);
-      dispatch({ type: FETCH_PATIENT_USER_SUCCESS, payload: res.data });
+      dispatch({ type: FETCH_PATIENT_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);
-      dispatch({ type: FETCH_PATIENT_USER_FAILURE, payload: err });
+      dispatch({ type: FETCH_PATIENT_FAILED, payload: err });
     });
 };
