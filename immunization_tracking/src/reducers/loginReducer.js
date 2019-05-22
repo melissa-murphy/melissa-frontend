@@ -14,12 +14,14 @@ function loginReducer(state = initialState, action) {
       return {
         ...state,
         loggingIn: true,
-        error: ''
+        error: '',
+        loading: true
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
-        loggingIn: false
+        loggingIn: false,
+        loading: false
       };
     case LOGIN_FAILURE:
       return {

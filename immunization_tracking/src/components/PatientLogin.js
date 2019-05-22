@@ -23,8 +23,9 @@ class PatientLogin extends Component {
 
   login = e => {
     e.preventDefault();
+    console.log(`--------------current auth state` + this.state.credentials);
     this.props.login(this.state.credentials).then(() => {
-      this.props.history.push('/');
+      this.props.history.push('/dashboard');
     });
   };
 
@@ -45,7 +46,7 @@ class PatientLogin extends Component {
             onChange={this.handleChange}
           />
           <button>
-            {this.props.login ? (
+            {this.props.loading ? (
               <Loader type="ThreeDots" color="purple" height="12" width="26" />
             ) : (
               'Log in'
