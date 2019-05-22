@@ -1,26 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/App';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
-import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
+import reducer from "./reducers";
 
-import rootReducer from './reducers';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk, logger))
+  reducer,
+  composeEnhancers(applyMiddleware(thunk, logger))
 );
-export const URL = 'https://immunization-tracker-backend.herokuapp.com';
 
 ReactDOM.render(
-  <Router>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </Router>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
 );
