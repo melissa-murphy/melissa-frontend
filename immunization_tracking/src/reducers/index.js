@@ -22,7 +22,7 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  console.log(`----------------fetch user/staff profile fired`);
+  console.log(`----------------reducer fired`);
   switch (action.type) {
     // TODO:
     //   ADD_PATIENT
@@ -34,38 +34,36 @@ function reducer(state = initialState, action) {
     case FETCH_PATIENT_START:
       return {
         ...state,
-        patient: action.payload.user,
-        error: '',
-        isLoggedIn: true
+        isLoading: true,
+        isLoggedIn: true,
+        error: ''
       };
     case FETCH_PATIENT_SUCCESS:
       return {
         ...state,
-        error: '',
-        isLoggedIn: true
+        isLoggedIn: true,
+        patients: action.payload,
+        error: ''
       };
     case LOGIN_START:
       return {
         ...state,
-        loggingIn: true,
         isLoggedIn: false,
         error: '',
-        loading: true
+        isLoading: true
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
-        loggingIn: false,
         isLoggedIn: true,
-        loading: false
+        isLoading: false
       };
     case LOGIN_FAILED:
       return {
         ...state,
         error: action.payload,
-        loggingIn: false,
         isLoggedIn: false,
-        loading: false
+        isLoading: false
       };
     default:
       return state;
