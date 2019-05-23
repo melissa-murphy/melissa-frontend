@@ -1,7 +1,7 @@
 // Patient Actions
 
 import axios from 'axios';
-// import { axiosAuth } from './axiosAuth';
+import { axiosAuth } from '../axiosAuth';
 
 export const URL = 'https://immunization-tracker-backend.herokuapp.com';
 
@@ -38,15 +38,15 @@ export const FETCH_PATIENT_SUCCESS = 'FETCH_PATIENT_SUCCESS';
 
 export const fetchPatients = data => dispatch => {
   dispatch({ type: FETCH_PATIENT_START, payload: data });
-  // console.log(`----------------------fetch patient start`);
-  // axiosAuth()
-  //   .get(`${URL}/api/patients`)
-  //   .then(res => {
-  //     console.log(res.data);
-  dispatch({ type: FETCH_PATIENT_SUCCESS });
-  // })
-  // .catch(err => {
-  //   console.log(err);
-  // dispatch({ type: FETCH_PATIENT_FAILED });
-  // });
+  console.log(`----------------------fetch patient start`);
+  axiosAuth()
+    .get(`${URL}/api/patients`)
+    .then(res => {
+      console.log(res.data);
+      dispatch({ type: FETCH_PATIENT_SUCCESS });
+      console.log(`-------------------fetch sucessful`)
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };

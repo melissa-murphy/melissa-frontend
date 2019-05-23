@@ -1,10 +1,3 @@
-// import * as actionTypes from '../actions';
-
-// TODO:
-//   ADD_USER
-//   REMOVE_USER (stretch)
-//   UPDATE_USER (stretch)
-
 import {
   FETCH_PATIENT_START,
   FETCH_PATIENT_SUCCESS,

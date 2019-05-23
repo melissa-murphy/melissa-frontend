@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  // eslint-disable-next-line
   Container,
   Card,
   CardBody,
@@ -11,14 +12,14 @@ import {
   Button
 } from 'reactstrap';
 
-function PatientDashboard(props) {
+const PatientDashboard = ({ patients }) => {
   return (
     <div>
       <div className="patient-info">
-        {props.patients.map(patient => (
-          <Container className='patient-dashboard-parent' key={patient.id}>
+        {patients.map(patient => (
+          <Container className='patient-dashboard-parent' patient={patient} key={patient.id}>
             <Card>
-              <CardTitle>Welcome {patient.first_name} </CardTitle>
+              <CardTitle>Welcome Name </CardTitle>
               <CardSubtitle>Main Dashboard</CardSubtitle>
               <CardBody>
                 <CardText>name/ID</CardText>
