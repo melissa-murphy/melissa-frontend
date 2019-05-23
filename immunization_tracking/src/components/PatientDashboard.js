@@ -16,9 +16,9 @@ function PatientDashboard(props) {
     <div>
       <div className="patient-info">
         {props.patients.map(patient => (
-          <Container>
+          <Container className='patient-dashboard-parent' key={patient.id}>
             <Card>
-              <CardTitle>Welcome </CardTitle>
+              <CardTitle>Welcome {patient.first_name} </CardTitle>
               <CardSubtitle>Main Dashboard</CardSubtitle>
               <CardBody>
                 <CardText>name/ID</CardText>
