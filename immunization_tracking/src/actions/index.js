@@ -34,7 +34,7 @@ export const FETCH_PATIENT_START = 'FETCH_PATIENT_USER_START';
 export const FETCH_PATIENT_SUCCESS = 'FETCH_PATIENT_USER_SUCCESS';
 export const FETCH_PATIENT_FAILED = 'FETCH_PATIENT_USER_FAILED';
 
-export const fetchUsers = () => dispatch => {
+export const fetchPatients = () => dispatch => {
   dispatch({ type: FETCH_PATIENT_START });
   console.log(`---------------patient fetching users`);
   axiosAuth()
