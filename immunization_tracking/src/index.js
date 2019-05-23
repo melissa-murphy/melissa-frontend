@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/App';
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
-import reducer from "./reducers";
+import reducer from './reducers';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -18,8 +18,10 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
+  <Router>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Router>,
+  document.getElementById('root')
 );
