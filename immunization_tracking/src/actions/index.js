@@ -32,6 +32,12 @@ export const login = creds => dispatch => {
     });
 };
 
+export const REGISTER_START = 'REGISTER_START';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAILED = 'REGISTER_FAILED';
+
+
+
 // Fetch + Initial Render
 export const FETCH_PATIENT_START = 'FETCH_PATIENT_START';
 export const FETCH_PATIENT_SUCCESS = 'FETCH_PATIENT_SUCCESS';
