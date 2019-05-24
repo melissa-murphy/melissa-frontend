@@ -31,13 +31,35 @@ class RegisterPatient extends Component {
       ss_id: ''
     }
   };
+
+  RegisterPatient = e => {
+    e.preventDefault();
+    console.log(`------------------register new patient`);
+    console.log(this.state.regauth);
+
+    this.props.Register(this.state.regauth).then(() => {
+      this.props.history.push('/patient-login');
+    });
+  };
+
+  handleChanges = e => {
+    this.setState({
+      regauth: {
+        ...this.state.regauth,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
   render() {
     return (
       <div className="new-registration">
         <Container>
           <Card>
             <CardTitle>Welcome! Please register below:</CardTitle>
-            <CardSubtitle>Create your personal immunization dashboard!</CardSubtitle>
+            <CardSubtitle>
+              Create your personal immunization dashboard!
+            </CardSubtitle>
             <CardBody>
               <Form>
                 <FormGroup>
@@ -47,6 +69,8 @@ class RegisterPatient extends Component {
                     name="username"
                     id="username"
                     placeholder="Please choose a username"
+                    onChange={this.handleChanges}
+                    value={this.state.regauth.username}
                   />
                 </FormGroup>
               </Form>
@@ -57,60 +81,76 @@ class RegisterPatient extends Component {
                   name="password"
                   id="password"
                   placeholder="Please choose a password"
+                  onChange={this.handleChanges}
+                  value={this.state.regauth.username}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="username">Email:</Label>
+                <Label for="email">Email:</Label>
                 <Input
                   type="email"
                   name="email"
                   id="email"
                   placeholder="Please enter your email"
+                  onChange={this.handleChanges}
+                  value={this.state.regauth.email}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="username">First Name:</Label>
+                <Label for="first_name">First Name:</Label>
                 <Input
                   type="text"
                   name="first_name"
                   id="first_name"
                   // placeholder=""
+                  onChange={this.handleChanges}
+                  value={this.state.regauth.first_name}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="username">Last Name:</Label>
+                <Label for="last_name">Last Name:</Label>
                 <Input
                   type="text"
                   name="last_name"
                   id="last_name"
                   // placeholder=""
+                  onChange={this.handleChanges}
+                  value={this.state.regauth.last_name}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="username">Social Security: Patient Authorization</Label>
+                <Label for="ss_id">
+                  Social Security: Patient Authorization
+                </Label>
                 <Input
                   type="text"
-                  name="username"
+                  name="ss_id"
                   id="username"
                   placeholder="Please enter the last 4 digits of your social security number"
+                  onChange={this.handleChanges}
+                  value={this.state.regauth.ss_id}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="username">Tel:</Label>
+                <Label for="tel">Tel:</Label>
                 <Input
-                  type="text"
-                  name="username"
+                  type="tel"
+                  name="tel"
                   id="username"
                   placeholder="What is your best contact number?"
+                  onChange={this.handleChanges}
+                  value={this.state.regauth.tel}
                 />
               </FormGroup>
               <FormGroup>
-                <Label for="username">Upload your personal avatar:</Label>
+                <Label for="avatar">Upload your personal avatar:</Label>
                 <Input
                   type="text"
-                  name="username"
-                  id="username"
+                  name="avatar"
+                  id="avatar"
                   placeholder="Optional"
+                  onChange={this.handleChanges}
+                  value={this.state.regauth.avatar}
                 />
               </FormGroup>
             </CardBody>
