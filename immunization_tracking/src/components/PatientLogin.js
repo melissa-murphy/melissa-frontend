@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { login } from '../actions';
 
 import { Input } from 'reactstrap';
@@ -40,13 +40,14 @@ class PatientLogin extends Component {
 
   login = e => {
     e.preventDefault();
-    console.log(`--------------current auth state` + this.state.credentials);
+    console.log(`--------------current auth state`, this.state.credentials);
     this.props.login(this.state.credentials).then(() => {
       this.props.history.push('/patient-dashboard');
     });
   };
 
   render() {
+    console.log(`-----------------------this.props`, this.props);
     return (
       <div>
         <form onSubmit={this.login}>
@@ -64,7 +65,8 @@ class PatientLogin extends Component {
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
-          <button onClick={this.login}>login</button>
+          <button>login</button>
+          {/* onClick={this.login} */}
         </form>
       </div>
     );

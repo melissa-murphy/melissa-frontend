@@ -9,7 +9,8 @@ export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 
-export const login = creds => async () => dispatch => {
+// async () =>
+export const login = creds => dispatch => {
   console.log(`---------------patient login fired`);
   dispatch({ type: LOGIN_START });
   return axios
@@ -44,7 +45,7 @@ export const fetchPatients = data => dispatch => {
     .then(res => {
       console.log(res.data);
       dispatch({ type: FETCH_PATIENT_SUCCESS });
-      console.log(`-------------------fetch sucessful`)
+      console.log(`-------------------fetch sucessful`);
     })
     .catch(err => {
       console.log(err);

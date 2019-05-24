@@ -1,14 +1,15 @@
-import React, { Component, Link } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PrivateRoute from '../PrivateRoute';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 import PatientLogin from './PatientLogin';
 import PatientDashboard from './PatientDashboard';
 import { fetchPatients } from '../actions';
+import RegisterPatient from './RegisterPatient';
 
 // import ChildPatientDashboard from './ChildPatientDashboard';
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 
 class App extends Component {
   componentDidMount() {
@@ -21,12 +22,14 @@ class App extends Component {
       <div className="App">
         <div className="header">
           <h1>Immunization Tracker</h1>
-          <Link to="patient-login">
-            <Button>Patient Login</Button>
-          </Link>
+          <p>
+            <Link to="/patient-login">Patient Login</Link>
+            <Link to='/new-patient'>Register Now</Link>
+          </p>
         </div>
 
         <Route path="/patient-login" component={PatientLogin} />
+        <Route path="/new-patient" component={RegisterPatient} />
         <PrivateRoute
           exact
           path="/patient-dashboard"
