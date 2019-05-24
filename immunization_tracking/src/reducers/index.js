@@ -1,16 +1,12 @@
-// import * as actionTypes from '../actions';
-
-// TODO:
-//   ADD_USER
-//   REMOVE_USER (stretch)
-//   UPDATE_USER (stretch)
-
 import {
   FETCH_PATIENT_START,
   FETCH_PATIENT_SUCCESS,
   LOGIN_START,
   LOGIN_SUCCESS,
-  LOGIN_FAILED
+  LOGIN_FAILED,
+  REGISTER_START,
+  REGISTER_SUCCESS,
+  REGISTER_FAILED
 } from '../actions';
 
 const initialState = {
@@ -64,6 +60,21 @@ function reducer(state = initialState, action) {
         error: action.payload,
         isLoggedIn: false,
         isLoading: false
+      };
+      case REGISTER_START:
+      return {
+        ...state,
+        isRegistering: true
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        isRegistering: true
+      };
+    case REGISTER_FAILED:
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return state;
