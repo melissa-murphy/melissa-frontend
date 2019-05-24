@@ -75,7 +75,7 @@ class RegisterPatient extends Component {
                 </FormGroup>
               </Form>
               <FormGroup>
-                <Label for="username">Password:</Label>
+                <Label for="password">Password:</Label>
                 <Input
                   type="text"
                   name="password"
