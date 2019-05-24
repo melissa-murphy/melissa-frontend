@@ -1,6 +1,5 @@
 // Patient Actions
 
-import axios from 'axios';
 import { axiosAuth } from '../axiosAuth';
 
 export const URL = 'https://immunization-tracker-backend.herokuapp.com';
@@ -13,7 +12,7 @@ export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const login = creds => dispatch => {
   console.log(`---------------patient login fired`);
   dispatch({ type: LOGIN_START });
-  return axios
+  axiosAuth()
     .post(`${URL}/login?role=1`, creds)
     .then(res => {
       localStorage.setItem('token', res.data.token);
@@ -36,7 +35,23 @@ export const REGISTER_START = 'REGISTER_START';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILED = 'REGISTER_FAILED';
 
-
+export const patientRegister = creds => dispatch => {
+  console.log(`-------------------------patient register fired`);
+  dispatch({ type: REGISTER_START });
+  axiosAuth()
+    .post(`${URL}/register?role=1`, creds)
+    .then(res => {
+      console.log(`------------------------response`, res)
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('uername', res.data.username)
+      console.log(`-----------------------reg ID`, res.data.id)
+      dispatch({ type: REGISTER_SUCCESS, payload: res.data.token })
+    })
+    .catch(err => {
+      console.log(`------------------------error`)
+      dispatch({ type: REGISTER_FAILED })
+    })
+}
 
 // Fetch + Initial Render
 export const FETCH_PATIENT_START = 'FETCH_PATIENT_START';

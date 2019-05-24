@@ -45,3 +45,4 @@ const RegisterPatient = ({ patients }) => {
 }
 
 export default RegisterPatient;
+
