@@ -35,21 +35,25 @@ export const REGISTER_START = 'REGISTER_START';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILED = 'REGISTER_FAILED';
 
-export const patientRegister = creds => dispatch => {
-  console.log(`-------------------------patient register fired`);
+export const registerPatient = creds => dispatch => {
+  console.log(
+    `-------------------------patient register fired` + JSON.stringify(creds)
+  );
   dispatch({ type: REGISTER_START });
   axiosAuth()
     .post(`${URL}/register?role=1`, creds)
     .then(res => {
-      console.log(`------------------------response`, res);
+      // console.log(`------------------------response`, res);
       localStorage.setItem('token', res.data.token);
-      localStorage.setItem('uername', res.data.username);
+      // localStorage.setItem('uername', res.data.username);
       console.log(`-----------------------reg ID`, res.data.id);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data.token });
+      console.log(`------------------------response`, JSON.stringify(res));
     })
     .catch(err => {
       console.log(`------------------------error`);
-      dispatch({ type: REGISTER_FAILED });
+      dispatch({ type: REGISTER_FAILED, payload: err });
+      alert('Oops! Something did not work. Please try again');
     });
 };
 

@@ -64,17 +64,20 @@ function reducer(state = initialState, action) {
       case REGISTER_START:
       return {
         ...state,
+        error: '',
         isRegistering: true
       };
     case REGISTER_SUCCESS:
       return {
         ...state,
-        isRegistering: true
+        error: '',
+        isRegistering: false
       };
     case REGISTER_FAILED:
       return {
         ...state,
-        error: action.payload
+        error: action.payload,
+        isRegistering: false
       };
     default:
       return state;

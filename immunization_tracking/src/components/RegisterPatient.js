@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { patientRegister } from '../actions';
+import { registerPatient } from '../actions';
 
 import {
   Container,
@@ -19,7 +19,7 @@ import {
 
 class RegisterPatient extends Component {
   state = {
-    regauth: {
+    credentials: {
       username: '',
       password: '',
       email: '',
@@ -32,20 +32,25 @@ class RegisterPatient extends Component {
     }
   };
 
-  RegisterPatient = e => {
+  registerPatient = e => {
     e.preventDefault();
-    console.log(`------------------register new patient`);
-    console.log(this.state.regauth);
+    console.log(`------------------register new patient`, this.state.credentials);
 
-    this.props.Register(this.state.regauth).then(() => {
-      this.props.history.push('/patient-login');
+    this.props.registerPatient(this.state.credentials).then(() => {
+      this.props.history.push({
+        pathname: '/patient-login',
+        state: {
+          username: this.state.credentials.username,
+          password: this.state.credentials.password
+        }
+      });
     });
   };
 
   handleChanges = e => {
     this.setState({
-      regauth: {
-        ...this.state.regauth,
+      credentials: {
+        ...this.state.credentials,
         [e.target.name]: e.target.value
       }
     });
@@ -61,7 +66,7 @@ class RegisterPatient extends Component {
               Create your personal immunization dashboard!
             </CardSubtitle>
             <CardBody>
-              <Form>
+              <Form onSubmit={this.registerPatient}>
                 <FormGroup>
                   <Label for="username">Username:</Label>
                   <Input
@@ -70,7 +75,7 @@ class RegisterPatient extends Component {
                     id="username"
                     placeholder="Please choose a username"
                     onChange={this.handleChanges}
-                    value={this.state.regauth.username}
+                    value={this.state.credentials.username}
                   />
                 </FormGroup>
               </Form>
@@ -82,7 +87,7 @@ class RegisterPatient extends Component {
                   id="password"
                   placeholder="Please choose a password"
                   onChange={this.handleChanges}
-                  value={this.state.regauth.username}
+                  value={this.state.credentials.password}
                 />
               </FormGroup>
               <FormGroup>
@@ -93,7 +98,7 @@ class RegisterPatient extends Component {
                   id="email"
                   placeholder="Please enter your email"
                   onChange={this.handleChanges}
-                  value={this.state.regauth.email}
+                  value={this.state.credentials.email}
                 />
               </FormGroup>
               <FormGroup>
@@ -104,7 +109,7 @@ class RegisterPatient extends Component {
                   id="first_name"
                   // placeholder=""
                   onChange={this.handleChanges}
-                  value={this.state.regauth.first_name}
+                  value={this.state.credentials.first_name}
                 />
               </FormGroup>
               <FormGroup>
@@ -115,7 +120,7 @@ class RegisterPatient extends Component {
                   id="last_name"
                   // placeholder=""
                   onChange={this.handleChanges}
-                  value={this.state.regauth.last_name}
+                  value={this.state.credentials.last_name}
                 />
               </FormGroup>
               <FormGroup>
@@ -128,7 +133,7 @@ class RegisterPatient extends Component {
                   id="username"
                   placeholder="Please enter the last 4 digits of your social security number"
                   onChange={this.handleChanges}
-                  value={this.state.regauth.ss_id}
+                  value={this.state.credentials.ss_id}
                 />
               </FormGroup>
               <FormGroup>
@@ -139,7 +144,7 @@ class RegisterPatient extends Component {
                   id="username"
                   placeholder="What is your best contact number?"
                   onChange={this.handleChanges}
-                  value={this.state.regauth.tel}
+                  value={this.state.credentials.tel}
                 />
               </FormGroup>
               <FormGroup>
@@ -150,12 +155,14 @@ class RegisterPatient extends Component {
                   id="avatar"
                   placeholder="Optional"
                   onChange={this.handleChanges}
-                  value={this.state.regauth.avatar}
+                  value={this.state.credentials.avatar}
                 />
               </FormGroup>
             </CardBody>
             <CardFooter>
-              <Button>Create New Profile</Button>
+              <Button type="submit" onClick={this.registerPatient}>
+                Create New Profile
+              </Button>
             </CardFooter>
           </Card>
         </Container>
@@ -164,11 +171,11 @@ class RegisterPatient extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isRegistering: state.isRegistering
-});
+// const mapStateToProps = state => ({
+//   isRegistering: state.isRegistering
+// });
 
 export default connect(
-  mapStateToProps,
-  { patientRegister }
+  null,
+  { registerPatient }
 )(RegisterPatient);
