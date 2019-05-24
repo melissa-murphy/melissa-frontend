@@ -1,49 +1,134 @@
 import React, { Component } from 'react';
-// import { connect }
+import { connect } from 'react-redux';
+import { patientRegister } from '../actions';
 
 import {
-  // eslint-disable-next-line
   Container,
   Card,
   CardBody,
-  CardText,
+  // CardText,
   CardTitle,
   CardSubtitle,
   CardFooter,
-  Button
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input
 } from 'reactstrap';
 
 class RegisterPatient extends Component {
+  state = {
+    regauth: {
+      username: '',
+      password: '',
+      email: '',
+      is_child: 0,
+      first_name: '',
+      last_name: '',
+      phone: '',
+      avatar: '',
+      ss_id: ''
+    }
+  };
   render() {
-    <div className="new-registration">
-      {patients.map(patient => (
-        <Container
-          className="register-new-patient"
-          patient={patient}
-          key={patient.id}
-        >
+    return (
+      <div className="new-registration">
+        <Container>
           <Card>
-            <CardTitle>Welcome To The Shit Show</CardTitle>
-            <CardSubtitle>Main Dashboard</CardSubtitle>
+            <CardTitle>Welcome! Please register below:</CardTitle>
+            <CardSubtitle>Create your personal immunization dashboard!</CardSubtitle>
             <CardBody>
-              <CardText>name/ID</CardText>
-              <CardText>SS#</CardText>
-              <CardText>Phone#</CardText>
-              <CardText>avatar image</CardText>
-              <CardText>is_kid? (0 | 1)</CardText>
-              <CardText>Username</CardText>
-              <CardText>PW</CardText>
-              <CardText>Email</CardText>
+              <Form>
+                <FormGroup>
+                  <Label for="username">Username:</Label>
+                  <Input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Please choose a username"
+                  />
+                </FormGroup>
+              </Form>
+              <FormGroup>
+                <Label for="username">Password:</Label>
+                <Input
+                  type="text"
+                  name="password"
+                  id="password"
+                  placeholder="Please choose a password"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="username">Email:</Label>
+                <Input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Please enter your email"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="username">First Name:</Label>
+                <Input
+                  type="text"
+                  name="first_name"
+                  id="first_name"
+                  // placeholder=""
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="username">Last Name:</Label>
+                <Input
+                  type="text"
+                  name="last_name"
+                  id="last_name"
+                  // placeholder=""
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="username">Social Security: Patient Authorization</Label>
+                <Input
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder="Please enter the last 4 digits of your social security number"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="username">Tel:</Label>
+                <Input
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder="What is your best contact number?"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="username">Upload your personal avatar:</Label>
+                <Input
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder="Optional"
+                />
+              </FormGroup>
             </CardBody>
             <CardFooter>
-              <Button>Kid 1</Button>
-              <Button>Kid 2</Button>
+              <Button>Create New Profile</Button>
             </CardFooter>
           </Card>
         </Container>
-      ))}
-    </div>;
+      </div>
+    );
   }
 }
 
-export default RegisterPatient;
+const mapStateToProps = state => ({
+  isRegistering: state.isRegistering
+});
+
+export default connect(
+  mapStateToProps,
+  { patientRegister }
+)(RegisterPatient);

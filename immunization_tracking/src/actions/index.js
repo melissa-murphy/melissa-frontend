@@ -41,17 +41,17 @@ export const patientRegister = creds => dispatch => {
   axiosAuth()
     .post(`${URL}/register?role=1`, creds)
     .then(res => {
-      console.log(`------------------------response`, res)
-      localStorage.setItem('token', res.data.token)
-      localStorage.setItem('uername', res.data.username)
-      console.log(`-----------------------reg ID`, res.data.id)
-      dispatch({ type: REGISTER_SUCCESS, payload: res.data.token })
+      console.log(`------------------------response`, res);
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('uername', res.data.username);
+      console.log(`-----------------------reg ID`, res.data.id);
+      dispatch({ type: REGISTER_SUCCESS, payload: res.data.token });
     })
     .catch(err => {
-      console.log(`------------------------error`)
-      dispatch({ type: REGISTER_FAILED })
-    })
-}
+      console.log(`------------------------error`);
+      dispatch({ type: REGISTER_FAILED });
+    });
+};
 
 // Fetch + Initial Render
 export const FETCH_PATIENT_START = 'FETCH_PATIENT_START';
