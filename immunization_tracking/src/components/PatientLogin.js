@@ -40,8 +40,8 @@ class PatientLogin extends Component {
 
   login = e => {
     e.preventDefault();
-    console.log(`--------------current auth state`, this.state.credentials);
-    this.props.login(this.state.credentials).then(() => {
+    console.log(`--------------current auth state`, this.state.creds);
+    this.props.login(this.state.creds).then(() => {
       this.props.history.push('/patient-dashboard');
     });
   };

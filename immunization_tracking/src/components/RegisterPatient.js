@@ -32,12 +32,43 @@ class RegisterPatient extends Component {
     }
   };
 
+  // register = e => {
+  //   e.preventDefault();
+  //   console.log(`------------------seriously, WTF MATE`, this.state.creds);
+  //   console.log(`----------------------------------------WTF MATE`, this.props.registerPatient);
+  //   console.log(`----------------------------------------WTF MATE`, this.state.isRegistering);
+  //   //this.state.isRegistering <----------im not passing this am I
+  //   this.props.registerPatient(this.state.creds).then(() => {
+  //     this.props.history.push({
+  //       pathname: '/patient-login',
+  //       state: {
+  //         username: this.state.creds.username,
+  //         password: this.state.creds.password
+  //       }
+  //     });
+  //   });
+  // };
+
+  handleChanges = e => {
+    this.setState({
+      creds: {
+        ...this.state.creds,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
   register = e => {
     e.preventDefault();
     console.log(`------------------seriously, WTF MATE`, this.state.creds);
-    console.log(`----------------------------------------WTF MATE`, this.props.registerPatient);
-    console.log(`----------------------------------------WTF MATE`, this.state.isRegistering);
-    //this.state.isRegistering <----------im not passing this am I
+    console.log(
+      `----------------------------------------WTF MATE`,
+      this.props.registerPatient
+    );
+    console.log(
+      `----------------------------------------WTF MATE`,
+      this.state.isRegistering
+    );
     this.props.registerPatient(this.state.creds).then(() => {
       this.props.history.push({
         pathname: '/patient-login',
@@ -46,15 +77,6 @@ class RegisterPatient extends Component {
           password: this.state.creds.password
         }
       });
-    });
-  };
-
-  handleChanges = e => {
-    this.setState({
-      creds: {
-        ...this.state.creds,
-        [e.target.name]: e.target.value
-      }
     });
   };
 
@@ -162,7 +184,7 @@ class RegisterPatient extends Component {
               </FormGroup> */}
             </CardBody>
             <CardFooter>
-              <Button type="submit" onClick={this.register}>
+              <Button type="submit" onClick={this.state.register}>
                 Create New Profile
               </Button>
             </CardFooter>

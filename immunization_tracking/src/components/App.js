@@ -35,6 +35,7 @@ class App extends Component {
             <RegisterPatient
               {...props}
               isRegistering={this.props.isRegistering}
+              register={this.props.register}
             />
           )}
         />
