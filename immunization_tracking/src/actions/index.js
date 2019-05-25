@@ -45,7 +45,7 @@ export const registerPatient = creds => dispatch => {
     .then(res => {
       // console.log(`------------------------response`, res);
       localStorage.setItem('token', res.data.token);
-      // localStorage.setItem('uername', res.data.username);
+      localStorage.setItem('username', res.data.username);
       console.log(`-----------------------reg ID`, res.data.id);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data.token });
       console.log(`------------------------response`, JSON.stringify(res));

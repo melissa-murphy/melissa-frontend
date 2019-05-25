@@ -24,12 +24,20 @@ class App extends Component {
           <h1>Immunization Tracker</h1>
           <p>
             <Link to="/patient-login">Patient Login</Link>
-            <Link to='/new-patient'>Register Now</Link>
+            <Link to="/new-patient">Register Now</Link>
           </p>
         </div>
 
         <Route path="/patient-login" component={PatientLogin} />
-        <Route path="/new-patient" component={RegisterPatient} />
+        <Route
+          path="/new-patient"
+          component={props => (
+            <RegisterPatient
+              {...props}
+              isRegistering={this.props.isRegistering}
+            />
+          )}
+        />
         <PrivateRoute
           exact
           path="/patient-dashboard"
@@ -37,6 +45,7 @@ class App extends Component {
             <PatientDashboard
               {...props}
               patients={this.props.patients}
+
               // deleteProfile={this.deleteProfile}
             />
           )}
@@ -51,7 +60,8 @@ const mapStateToProps = state => {
   return {
     patients: state.patients,
     fetchPatients: state.fetchPatients,
-    error: state.error
+    error: state.error,
+    isRegistering: state.isRegistering
   };
 };
 

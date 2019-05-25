@@ -11,9 +11,9 @@ import {
 
 const initialState = {
   patients: {},
-  loggingIn: false,
-  loggedIn: false,
-  loading: false,
+  isLoggingIn: false,
+  isLoggedIn: false,
+  isLoading: false,
   error: ''
 };
 
