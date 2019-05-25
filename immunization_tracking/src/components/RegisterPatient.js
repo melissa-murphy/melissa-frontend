@@ -19,14 +19,14 @@ import {
 
 class RegisterPatient extends Component {
   state = {
-    credentials: {
+    regForm: {
       username: '',
       password: '',
       email: '',
       is_child: 0,
       first_name: '',
       last_name: '',
-      phone: '',
+      tel: '',
       avatar: '',
       ss_id: ''
     }
@@ -34,14 +34,14 @@ class RegisterPatient extends Component {
 
   registerPatient = e => {
     e.preventDefault();
-    console.log(`------------------register new patient`, this.state.credentials);
-
-    this.props.registerPatient(this.state.credentials).then(() => {
+    console.log(`------------------register new patient`, this.state.regForm);
+    //this.state.isRegistering <----------im not passing this am I
+    this.props.registerPatient(this.state.isRegistering).then(() => {
       this.props.history.push({
         pathname: '/patient-login',
         state: {
-          username: this.state.credentials.username,
-          password: this.state.credentials.password
+          username: this.state.regForm.username,
+          password: this.state.regForm.password
         }
       });
     });
@@ -49,8 +49,8 @@ class RegisterPatient extends Component {
 
   handleChanges = e => {
     this.setState({
-      credentials: {
-        ...this.state.credentials,
+      regForm: {
+        ...this.state.regForm,
         [e.target.name]: e.target.value
       }
     });
@@ -75,7 +75,7 @@ class RegisterPatient extends Component {
                     id="username"
                     placeholder="Please choose a username"
                     onChange={this.handleChanges}
-                    value={this.state.credentials.username}
+                    value={this.state.regForm.username}
                   />
                 </FormGroup>
               </Form>
@@ -87,7 +87,7 @@ class RegisterPatient extends Component {
                   id="password"
                   placeholder="Please choose a password"
                   onChange={this.handleChanges}
-                  value={this.state.credentials.password}
+                  value={this.state.regForm.password}
                 />
               </FormGroup>
               <FormGroup>
@@ -98,10 +98,10 @@ class RegisterPatient extends Component {
                   id="email"
                   placeholder="Please enter your email"
                   onChange={this.handleChanges}
-                  value={this.state.credentials.email}
+                  value={this.state.regForm.email}
                 />
               </FormGroup>
-              <FormGroup>
+              {/* <FormGroup>
                 <Label for="first_name">First Name:</Label>
                 <Input
                   type="text"
@@ -109,7 +109,7 @@ class RegisterPatient extends Component {
                   id="first_name"
                   // placeholder=""
                   onChange={this.handleChanges}
-                  value={this.state.credentials.first_name}
+                  value={this.state.regForm.first_name}
                 />
               </FormGroup>
               <FormGroup>
@@ -120,7 +120,7 @@ class RegisterPatient extends Component {
                   id="last_name"
                   // placeholder=""
                   onChange={this.handleChanges}
-                  value={this.state.credentials.last_name}
+                  value={this.state.regForm.last_name}
                 />
               </FormGroup>
               <FormGroup>
@@ -133,7 +133,7 @@ class RegisterPatient extends Component {
                   id="username"
                   placeholder="Please enter the last 4 digits of your social security number"
                   onChange={this.handleChanges}
-                  value={this.state.credentials.ss_id}
+                  value={this.state.regForm.ss_id}
                 />
               </FormGroup>
               <FormGroup>
@@ -144,10 +144,10 @@ class RegisterPatient extends Component {
                   id="username"
                   placeholder="What is your best contact number?"
                   onChange={this.handleChanges}
-                  value={this.state.credentials.tel}
+                  value={this.state.regForm.tel}
                 />
-              </FormGroup>
-              <FormGroup>
+              </FormGroup> */}
+              {/* <FormGroup>
                 <Label for="avatar">Upload your personal avatar:</Label>
                 <Input
                   type="text"
@@ -157,7 +157,7 @@ class RegisterPatient extends Component {
                   onChange={this.handleChanges}
                   value={this.state.credentials.avatar}
                 />
-              </FormGroup>
+              </FormGroup> */}
             </CardBody>
             <CardFooter>
               <Button type="submit" onClick={this.registerPatient}>
